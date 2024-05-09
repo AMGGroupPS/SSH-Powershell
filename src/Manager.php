@@ -1,13 +1,13 @@
 <?php
-
+namespace amggroup;
 /*
-* Classe de manipulação dos dados PowerShell
-* Autor: Alisson Pelizaro
+* PowerShell data manipulation class
+* Author: Alisson Pelizaro
 */
 class Manager {
 
   /*
-  * Converte a estrutura do comando getUsers no PowerShell para um objeto
+  * Converts the getUsers command structure in PowerShell to an object
   */
   public function getUsers($response){
     $response = explode("\n", $response);
@@ -29,7 +29,7 @@ class Manager {
   }
 
   /*
-  * Converte a estrutura do comando getUser no PowerShell para um objeto
+  * Converts the getUser command structure in PowerShell to an object
   */
   public function getUser($response){
     $response = explode("\n", $response);
@@ -50,29 +50,26 @@ class Manager {
   }
 
   /*
-  * Limpa string
+  * Cleans string
   */
   private function cleanString($string){
     $string = iconv( "UTF-8" , "ASCII//TRANSLIT//IGNORE" , $string );
     $string = preg_replace(
-      array('/[ ]/' , '/[^A-Za-z0-9\-]/'),
-      array('', ''),
-      $string
+        array('/[ ]/' , '/[^A-Za-z0-9\-]/'),
+        array('', ''),
+        $string
     );
 
     $what = array(
-      '-','(',')',',',';',':','|','!','"','#','$',
-      '%','&','/','=','?','~','^','>','<','ª','º'
+        '-','(',')',',',';',':','|','!','"','#','$',
+        '%','&','/','=','?','~','^','>','<','ª','º'
     );
     $by   = array(
-      '_','_','_','_','_','_','_','_','_','_','_',
-      '_','_','_','_','_','_','_','_','_','_','_'
+        '_','_','_','_','_','_','_','_','_','_','_',
+        '_','_','_','_','_','_','_','_','_','_','_'
     );
 
     return str_replace($what, $by, $string);
   }
 
 }
-
-
-?>

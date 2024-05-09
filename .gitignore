@@ -1,0 +1,5 @@
+vendor/
+.env
+tests/
+ssh.log
+.idea/

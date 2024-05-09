@@ -1,6 +1,7 @@
 {
-    "name": "alissonpelizaro/ssh_powershell",
+    "name": "amggroup/ssh_powershell",
     "description": "Remote Powershell SSH access",
+    "version": "1.0.0",
     "license": [
         "RPL-1.5",
         "proprietary"
@@ -18,9 +19,20 @@
             "name": "Alisson Pelizaro",
             "email": "alissonpelizaro@hotmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "Matt Lowe <AMG Group Ltd>",
+            "email": "matt.lowe@amg-group.co.uk",
+            "role": "Developer"
         }
     ],
     "require": {
-        "phpseclib/phpseclib":"~3.0"
+        "phpseclib/phpseclib":"~3.0",
+      "ext-posix": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "amggroup\\": "src/"
+        }
     }
 }

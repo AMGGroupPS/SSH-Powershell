@@ -1,15 +1,15 @@
 <?php
-
+namespace amggroup;
 /**
-* Classe construtora de LOG
-* Autor: Alisson Pelizaro
-*/
+ * Log Constructor Class
+ * Author: Alisson Pelizaro
+ */
 class Log {
 
   private static $debug;
 
   /*
-  * Gera um conteudo de log
+  * Generates log content
   */
   public static function create($content, $err = false, $kill = false){
     $content = preg_replace("/\r?\n/","", $content);
@@ -21,21 +21,21 @@ class Log {
     Log::filePut($content);
 
     if($kill) {
-      Log::create('Processo encerrado');
+      Log::create('Process ended');
       die;
     }
 
   }
 
   /*
-  * Seta o serviço para rodar em modo de DEBUG ou não
+  * Sets the service to run in DEBUG mode or not
   */
   public static function setDebugMode($mode){
     Log::$debug = $mode;
   }
 
   /*
-  * Método para gravar um conteudo no arquivo de LOG
+  * Method to write content to the LOG file
   */
   private static function filePut($content){
     $file = fopen('ssh.log', 'a');
@@ -44,6 +44,3 @@ class Log {
   }
 
 }
-
-
-?>
